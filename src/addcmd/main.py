@@ -43,8 +43,6 @@ def main():
 
     parser.add_argument('path')
     parser.add_argument('cmdname')
-    parser.add_argument('-f', '--flag', default=False,
-                    action='store_true')
 
     args = parser.parse_args()
     params = params | vars(args)
