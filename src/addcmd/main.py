@@ -5,7 +5,7 @@ from pathlib import Path
 from mkcmd.cli import build
 from tomlkit import toml_file, nl
 
-def do_main(path, cmdname, flag, **kwargs):
+def do_main(path, cmdname, **kwargs):
     dst = Path(path)
     cfg = dst.joinpath('pyproject.toml')
     tomlfile = toml_file.TOMLFile(cfg.absolute())
