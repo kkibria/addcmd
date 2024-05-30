@@ -8,6 +8,9 @@ from tomlkit import toml_file, nl
 def do_main(path, cmdname, **kwargs):
     dst = Path(path)
     cfg = dst.joinpath('pyproject.toml')
+    if not cfg.exists():
+        raise IOError(f'"{cfg}" does not exist, exiting!')
+    
     tomlfile = toml_file.TOMLFile(cfg.absolute())
     config = tomlfile.read()
 
