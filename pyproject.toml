@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "addcmd"
+version = "0.1.0"
+description = ""
+authors = ["Khan Kibria <khan.kibria@gmail.com>"]
+readme = "README.md"
+packages = [{include = "addcmd", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkcmd = {git = "https://github.com/kkibria/mkcmd.git"}
+tomlkit = "^0.12.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+addcmd = "addcmd.main:main"
