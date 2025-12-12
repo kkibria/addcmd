@@ -14,9 +14,8 @@ def do_main(path, cmdname, **kwargs):
     tomlfile = toml_file.TOMLFile(cfg.absolute())
     config = tomlfile.read()
 
-    tp = config['tool']['poetry']
-    pkg = tp['packages'][0]
-    cmdpy = dst.joinpath(pkg['from'], pkg['include'], cmdname)
+    prj = config['project']
+    cmdpy = dst.joinpath("src", prj["name"], cmdname)
 
     pyf = cmdpy.parent.joinpath(cmdpy.name + '.py')
     if pyf.exists():
@@ -24,14 +23,14 @@ def do_main(path, cmdname, **kwargs):
 
     build({}, cmdpy, False, False, **kwargs)
 
-    ins = 'scripts' not in tp
+    ins = 'scripts' not in prj
     if ins:
-        tp['scripts'] = {}
+        prj['scripts'] = {}
 
-    tp['scripts'][cmdname] = f'{pkg["include"]}.{cmdname}:main'
+    prj['scripts'][cmdname] = f'{prj["name"]}.{cmdname}:main'
  
     if ins:
-        tp['scripts'].add(nl())
+        prj['scripts'].add(nl())
 
     tomlfile.write(config)
     pass
