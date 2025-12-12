@@ -9,9 +9,9 @@ This tool is built with [`chef`](https://github.com/kkibria/chef) which uses
 Recommended way is to install `addcmd` globally and you will
 have to install in administrative mode.
 
-### Using poetry
+### Using uv
 ```
-poetry add git+https://github.com/kkibria/addcmd.git
+uv tool -n install git+https://github.com/kkibria/addcmd.git
 ```
 
 ### Using pip
